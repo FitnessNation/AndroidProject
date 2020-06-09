@@ -2,5 +2,11 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="orange">#FF9800</color>
+
+
+    <color name="second_activity_background">#5905ad</color>
+    <color name="F1A2_fragment_color">#8c1515</color>
+    <color name="third_fragment_bg">#00EEB6</color>
+    <color name="final_fragment_bg">#EE8300</color>
 </resources>

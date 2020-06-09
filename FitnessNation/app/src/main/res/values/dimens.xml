@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="static_fragment">12dp</dimen>
+
+    <dimen name="margin_medium">30dp</dimen>
+
+    <dimen name="text_size_medium">18sp</dimen>
+
+    <dimen name="padding_medium">12dp</dimen>
+    <dimen name="margin_extra_big">200dp</dimen>
+    <dimen name="margin" />
+    <dimen name="mardin_dimen">15dp</dimen>
+    <dimen name="padding_dimen">15</dimen>
+</resources>
