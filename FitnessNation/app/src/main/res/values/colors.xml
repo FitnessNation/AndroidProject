@@ -3,6 +3,7 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="orange">#FF9800</color>
+    <color name="white">#FFFFFF</color>
 
 
     <color name="second_activity_background">#5905ad</color>
