@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.fitnessnation.R
+import kotlinx.android.synthetic.main.fragment_menu_login.*
 
 
 class MenuLoginFragment : Fragment() {
@@ -26,16 +27,20 @@ class MenuLoginFragment : Fragment() {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+            btn_login.setOnClickListener {
+                toTheLoginFragment()
 
+            }
         }
 
-    /*
-        fun toTheSecondFragment()
+
+
+        fun toTheLoginFragment()
         {
             val transaction = fragmentManager!!.beginTransaction()
-            transaction.replace(R.id.primary_frame_s_session,ThirdFragment.newInstance())
-            transaction.addToBackStack(ThirdFragment.toString())
+            transaction.replace(R.id.primary_frame_s_session,LogInFragment.newInstance())
+            transaction.addToBackStack(LogInFragment.toString())
             transaction.commit()
         }
-    */
+
 }
