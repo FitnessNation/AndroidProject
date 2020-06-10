@@ -31,6 +31,16 @@ class MenuLoginFragment : Fragment() {
                 toTheLoginFragment()
 
             }
+
+            btn_sign_up.setOnClickListener {
+                toTheSignUpFragment()
+
+            }
+
+            btn_forgot_password.setOnClickListener {
+                toTheForgotPasswordFragment()
+
+            }
         }
 
 
@@ -42,5 +52,21 @@ class MenuLoginFragment : Fragment() {
             transaction.addToBackStack(LogInFragment.toString())
             transaction.commit()
         }
+
+    fun toTheSignUpFragment()
+    {
+        val transaction = fragmentManager!!.beginTransaction()
+        transaction.replace(R.id.primary_frame_s_session,SignUpFragment.newInstance())
+        transaction.addToBackStack(SignUpFragment.toString())
+        transaction.commit()
+    }
+
+    fun toTheForgotPasswordFragment()
+    {
+        val transaction = fragmentManager!!.beginTransaction()
+        transaction.replace(R.id.primary_frame_s_session,ForgotPasswordFragment.newInstance())
+        transaction.addToBackStack(ForgotPasswordFragment.toString())
+        transaction.commit()
+    }
 
 }
