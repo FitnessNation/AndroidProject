@@ -47,10 +47,7 @@ class MenuLoginFragment : Fragment() {
                 Toast.makeText(getActivity()?.getApplicationContext(), "Sign Up", Toast.LENGTH_LONG).show();
             }
 
-            btn_forgot_password.setOnClickListener {
-                toTheForgotPasswordFragment()
-                Toast.makeText(getActivity()?.getApplicationContext(), "Forgot Password", Toast.LENGTH_LONG).show();
-            }
+
 
         }
 
@@ -72,13 +69,6 @@ class MenuLoginFragment : Fragment() {
         transaction.commit()
     }
 
-    private fun toTheForgotPasswordFragment()
-    {
-        val transaction = fragmentManager!!.beginTransaction()
-        transaction.replace(R.id.primary_frame_s_session,ForgotPasswordFragment.newInstance())
-        transaction.addToBackStack(ForgotPasswordFragment.toString())
-        transaction.commit()
-    }
 
 
 

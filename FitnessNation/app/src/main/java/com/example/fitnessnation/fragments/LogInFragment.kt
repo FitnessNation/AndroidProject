@@ -77,7 +77,7 @@ class LogInFragment : Fragment() {
         if (firstName == "" || lastName == "") {
             Toast.makeText(
                 activity,
-                "You didn't fill one of the EditText boxes",
+                "You didn't fill all the boxes",
                 Toast.LENGTH_SHORT
             ).show()
         } else {

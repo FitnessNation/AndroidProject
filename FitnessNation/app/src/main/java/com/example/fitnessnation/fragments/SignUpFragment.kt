@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fitnessnation.LogInFragment
 
 import com.example.fitnessnation.R
 import com.example.fitnessnation.Recycler
@@ -61,6 +62,7 @@ class SignUpFragment : Fragment() {
             val password = Password.getText().toString()
            SignUpButtonExecute(username, password)
            RefreshRecycle()
+
         })
     }
 
@@ -68,7 +70,7 @@ class SignUpFragment : Fragment() {
         if (username == "" || password == "") {
             Toast.makeText(
                 activity,
-                "You didn't fill one of boxes",
+                "You didn't fill all the boxes",
                 Toast.LENGTH_SHORT
             ).show()
         } else {
@@ -78,8 +80,9 @@ class SignUpFragment : Fragment() {
             if (findUser(user)) {
                 Toast.makeText(activity, "User is already registered", Toast.LENGTH_SHORT).show()
             } else {
-                LoginActivity.appDatabase.dao().addUser(user);
+                LoginActivity.appDatabase.dao().addUser(user)
                 Toast.makeText(activity, "Succesfully registered!", Toast.LENGTH_SHORT).show()
+                toTheLoginFragment();
             }
         }
     }
@@ -102,6 +105,15 @@ class SignUpFragment : Fragment() {
                     .show()
             }
         }
+    }
+
+
+    private fun toTheLoginFragment()
+    {
+        val transaction = fragmentManager!!.beginTransaction()
+        transaction.replace(R.id.primary_frame_s_session, LogInFragment.newInstance())
+        transaction.addToBackStack(LogInFragment.toString())
+        transaction.commit()
     }
 
     fun findUser(user: User): Boolean {
