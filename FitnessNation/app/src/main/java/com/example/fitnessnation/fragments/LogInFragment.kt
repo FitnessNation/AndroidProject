@@ -58,7 +58,7 @@ class LogInFragment : Fragment() {
         if (username == "" || password == "") {
             Toast.makeText(
                 activity,
-                "You didn't fill one of the EditText boxes",
+                "You didn't fill one of boxes",
                 Toast.LENGTH_SHORT
             ).show()
         } else {
@@ -66,10 +66,9 @@ class LogInFragment : Fragment() {
             user.setUsername(username)
             user.setPassword(password)
             if (findUser(user)) {
-                Toast.makeText(activity, "This user already exist", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "You are logged in", Toast.LENGTH_SHORT).show()
             } else {
-                LoginActivity.appDatabase.dao().addUser(user)
-                Toast.makeText(activity, "User added successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "No such user", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -86,13 +85,8 @@ class LogInFragment : Fragment() {
             user.setUsername(firstName)
             user.setPassword(lastName)
             if (!findUser(user)) {
-                Toast.makeText(
-                    activity,
-                    "First name or last name are incorrect",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(activity, "First name or last name are incorrect", Toast.LENGTH_SHORT).show()
             } else {
-                LoginActivity.appDatabase.dao().deleteUser(user)
                 Toast.makeText(activity, "User deleted successfully", Toast.LENGTH_SHORT)
                     .show()
             }
