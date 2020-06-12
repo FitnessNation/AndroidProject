@@ -11,7 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessnation.activitites.LoginActivity
+import com.example.fitnessnation.fragments.MenuLoginFragment
 import kotlinx.android.synthetic.main.fragment_log_in.*
+import kotlinx.android.synthetic.main.fragment_logo.*
+import kotlinx.android.synthetic.main.fragment_menu_login.*
 import java.util.*
 
 class LogInFragment : Fragment() {
@@ -19,28 +22,37 @@ class LogInFragment : Fragment() {
     private var password: EditText? = null
     private var users: List<User>? = null
     private var loginButton: Button? = null
-    private var view: View? = null
-    private var recyclerView: RecyclerView? = null
+    private var vieww: View? = null
+    lateinit var recyclerView: RecyclerView
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: Recycler? = null
 
-
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        view = inflater.inflate(R.layout.fragment_log_in, container, false)
-        RefreshRecycle()
-        username = view!!.findViewById(R.id.Username)
-        password = view!!.findViewById(R.id.Password)
-        loginButton = view!!.findViewById(R.id.login_button)
-        login_button.setOnClickListener(View.OnClickListener {
-            val username = Username.getText().toString()
-            val password = Password.getText().toString()
-            AddButtonExecute(username, password)
-            RefreshRecycle()
-        })
-
-        return view
+    companion object{
+        fun newInstance()= LogInFragment()
     }
+
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,  savedInstanceState: Bundle?)
+            = inflater.inflate(R.layout.fragment_log_in, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        RefreshRecycle()
+
+      username = view!!.findViewById(R.id.Username)
+      password = view!!.findViewById(R.id.Password)
+
+        loginButton = view!!.findViewById(R.id.login_button)
+
+      login_button.setOnClickListener(View.OnClickListener {
+          val username = Username.getText().toString()
+          val password = Password.getText().toString()
+          LoginButtonExecute(username, password)
+          RefreshRecycle()
+      })
+
+    }
+
+
 
     fun LoginButtonExecute(username: String, password: String) {
         if (username == "" || password == "") {
@@ -56,7 +68,7 @@ class LogInFragment : Fragment() {
             if (findUser(user)) {
                 Toast.makeText(activity, "This user already exist", Toast.LENGTH_SHORT).show()
             } else {
-                LoginActivity.appDatabase.get().dao().addUser(user)
+                LoginActivity.appDatabase.dao().addUser(user)
                 Toast.makeText(activity, "User added successfully", Toast.LENGTH_SHORT).show()
             }
         }
@@ -71,8 +83,8 @@ class LogInFragment : Fragment() {
             ).show()
         } else {
             val user = User()
-            user.setFirst_name(firstName)
-            user.setLast_name(lastName)
+            user.setUsername(firstName)
+            user.setPassword(lastName)
             if (!findUser(user)) {
                 Toast.makeText(
                     activity,
@@ -80,7 +92,7 @@ class LogInFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                MainActivity.appDatabase.dao().deleteUser(user)
+                LoginActivity.appDatabase.dao().deleteUser(user)
                 Toast.makeText(activity, "User deleted successfully", Toast.LENGTH_SHORT)
                     .show()
             }
@@ -89,22 +101,22 @@ class LogInFragment : Fragment() {
 
     fun findUser(user: User): Boolean {
         for (usr in users!!) {
-            if (usr.getFirst_name().equals(user.getFirst_name()) && usr.getLast_name().equals(user.getLast_name())) return true
+            if (usr.getUsername().equals(user.getUsername()) && usr.getPassword().equals(user.getPassword())) return true
         }
         return false
     }
 
-    fun RefreshRecycle() {
+    private fun RefreshRecycle() {
         recyclerView = view!!.findViewById(R.id.recycle_view)
         layoutManager = LinearLayoutManager(context)
         recyclerView.setLayoutManager(layoutManager)
-        users = MainActivity.appDatabase.dao().getUsers()
+        users = LoginActivity.appDatabase.dao().getUsers()
         val itemList: MutableList<String> =
             ArrayList()
         var infoAboutUser = ""
         for (usr in users!!) {
-            val firstName: String = usr.getFirst_name()
-            val lastName: String = usr.getLast_name()
+            val firstName: String = usr.getUsername()
+            val lastName: String = usr.getPassword()
             infoAboutUser = "$firstName $lastName"
             itemList.add(infoAboutUser)
         }
@@ -113,9 +125,4 @@ class LogInFragment : Fragment() {
         recyclerView.setAdapter(adapter)
     }
 
-    companion object {
-        fun newInstance(): fragment {
-            return fragment()
-        }
-    }
 }
