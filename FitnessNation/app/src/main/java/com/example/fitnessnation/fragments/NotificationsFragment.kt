@@ -10,12 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.fitnessnation.R
 
-class ProfileFragment : Fragment() {
+class NotificationsFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val root = inflater.inflate(R.layout.fragment_profile, container, false)
+        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
 
         return root
     }

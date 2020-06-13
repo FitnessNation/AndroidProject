@@ -7,24 +7,24 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.fitnessnation.activitites.ui.home.HomeFragment"
+        android:name="com.example.fitnessnation.fragments.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_meal"
-        android:name="com.example.fitnessnation.activitites.ui.dashboard.DashboardFragment"
+        android:name="com.example.fitnessnation.fragments.AddMealFragment"
         android:label="@string/title_meal"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_addmeal" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.fitnessnation.activitites.ui.notifications.NotificationsFragment"
+        android:name="com.example.fitnessnation.fragments.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/navigation_statistics"
-        android:name="com.example.fitnessnation.StatisticsFragment"
+        android:name="com.example.fitnessnation.fragments.StatisticsFragment"
         android:label="fragment_statistics"
         tools:layout="@layout/fragment_statistics" />
 </navigation>
