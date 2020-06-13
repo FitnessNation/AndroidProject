@@ -1,12 +1,17 @@
 package com.example.fitnessnation;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "users")
-public class User {
+public class User implements Serializable {//serializable is for passing the object to the next activity
 
 
     @PrimaryKey
@@ -31,4 +36,6 @@ public class User {
         this.username = username;
     }
     public void setPassword(String password) {this.password = password; }
+
+
 }

@@ -50,7 +50,7 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        RefreshRecycle()
+        users = LoginActivity.appDatabase.dao().getUsers()
 
         username = view!!.findViewById(R.id.Username)
         password = view!!.findViewById(R.id.Password)
@@ -61,7 +61,7 @@ class SignUpFragment : Fragment() {
             val username = Username.getText().toString()
             val password = Password.getText().toString()
            SignUpButtonExecute(username, password)
-           RefreshRecycle()
+            users = LoginActivity.appDatabase.dao().getUsers()
 
         })
     }
@@ -87,26 +87,6 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    fun DeleteButtonExecute(firstName: String, lastName: String) {
-        if (firstName == "" || lastName == "") {
-            Toast.makeText(
-                activity,
-                "You didn't fill one of the EditText boxes",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else {
-            val user = User()
-            user.setUsername(firstName)
-            user.setPassword(lastName)
-            if (!findUser(user)) {
-                Toast.makeText(activity, "First name or last name are incorrect", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(activity, "User deleted successfully", Toast.LENGTH_SHORT)
-                    .show()
-            }
-        }
-    }
-
 
     private fun toTheLoginFragment()
     {
@@ -118,28 +98,10 @@ class SignUpFragment : Fragment() {
 
     fun findUser(user: User): Boolean {
         for (usr in users!!) {
-            if (usr.getUsername().equals(user.getUsername()) && usr.getPassword().equals(user.getPassword())) return true
+            if (usr.getUsername().equals(user.getUsername())) return true
         }
         return false
     }
 
-    private fun RefreshRecycle() {
-        recyclerView = view!!.findViewById(R.id.recycle_view)
-        layoutManager = LinearLayoutManager(context) as RecyclerView.LayoutManager?
-        recyclerView.setLayoutManager(layoutManager)
-        users = LoginActivity.appDatabase.dao().getUsers()
-        val itemList: MutableList<String> =
-            ArrayList()
-        var infoAboutUser = ""
-        for (usr in users!!) {
-            val firstName: String = usr.getUsername()
-            val lastName: String = usr.getPassword()
-            infoAboutUser = "$firstName $lastName"
-            itemList.add(infoAboutUser)
-        }
-        adapter = Recycler(itemList)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.setAdapter(adapter)
-    }
 
     }
