@@ -37,6 +37,16 @@ class ProfileFragment : Fragment() {
         height.text= user?.getHeight().toString();
         tv_username.text= user?.getUsername();
 
+        if(user?.getGender()=="man")
+        {
+            imageOfGender.setImageResource(R.drawable.man)
+        }
+        else
+        {
+            imageOfGender.setImageResource(R.drawable.woman)
+        }
+
+
       //  weight.text=a;
 
 
