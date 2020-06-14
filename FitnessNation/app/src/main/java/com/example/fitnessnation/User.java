@@ -22,14 +22,17 @@ public class User implements Serializable {//serializable is for passing the obj
 
 
     @ColumnInfo(name = "user_weight")
-    private double weight;
+    private int weight=0;
 
     @ColumnInfo(name = "user_height")
-    private double height=0.0;
+    private int height=0;
 
 
     @ColumnInfo(name = "user_password")
     private String password;
+
+    @ColumnInfo(name = "user_gender")
+    private String gender="nothing";
 
 
     public String getUsername() {
@@ -38,15 +41,18 @@ public class User implements Serializable {//serializable is for passing the obj
     public String getPassword() {
         return password;
     }
-    public double getWeight() { return weight; }
-    public double getHeight() {return height; }
+    public int getWeight() { return weight; }
+    public int getHeight() {return height; }
+    public String getGender() {return gender; }
+
 
     public void setUsername(String username) {
         this.username = username;
     }
+    public void setGender(String gender) {this.gender=gender; }
     public void setPassword(String password) {this.password = password; }
-    public void setWeight(double weight) { this.weight = weight; }
-    public void setHeight(double height) {this.height=height; }
+    public void setWeight(int weight) { this.weight = weight; }
+    public void setHeight(int height) {this.height=height; }
 
 
 }

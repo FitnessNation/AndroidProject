@@ -34,7 +34,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
        user= arguments?.getSerializable("user") as User?
         weight.text= user?.getWeight().toString();
-        height.text= user?.getWeight().toString();
+        height.text= user?.getHeight().toString();
         tv_username.text= user?.getUsername();
 
       //  weight.text=a;

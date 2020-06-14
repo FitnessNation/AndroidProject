@@ -1,6 +1,7 @@
 package com.example.fitnessnation.fragments
 
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_log_in.*
 import kotlinx.android.synthetic.main.fragment_log_in.Password
 import kotlinx.android.synthetic.main.fragment_log_in.Username
 import kotlinx.android.synthetic.main.fragment_sign_up.*
+import java.sql.Types.NULL
 import java.util.ArrayList
 
 
@@ -60,35 +62,70 @@ class SignUpFragment : Fragment() {
         signup_button.setOnClickListener(View.OnClickListener {
             val username = Username.getText().toString()
             val password = Password.getText().toString()
-            val weight=0.0
-            val height=0.0
-           SignUpButtonExecute(username, password,weight,height)
+            val weight = weight.getText().toString()
+           // weight.toIntOrNull();
+
+            val height = height.getText().toString()
+            //height.toIntOrNull();
+
+
+            var gender:String="female"
+
+                if(female.isChecked())
+                {
+                    gender="female"
+                   // Toast.makeText(activity, "Female", Toast.LENGTH_SHORT).show()
+                }
+                else if(male.isChecked())
+                {
+                    gender="male"
+                   // Toast.makeText(activity, "Male", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    Toast.makeText(activity, "You didn't fill all the boxes11", Toast.LENGTH_SHORT).show()
+                }
+
+           SignUpButtonExecute(username, password,weight,height,gender)
             users = LoginActivity.appDatabase.dao().getUsers()
 
         })
     }
 
-    fun SignUpButtonExecute(username: String, password: String,weight:Double,height:Double) {
-        if (username == "" || password == "") {
-            Toast.makeText(
-                activity,
-                "You didn't fill all the boxes",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else {
-            val user = User()
-            user.setUsername(username)
-            user.setPassword(password)
-            user.setWeight(weight)
-            user.setHeight(height)
-            if (findUser(user)) {
-                Toast.makeText(activity, "User is already registered", Toast.LENGTH_SHORT).show()
-            } else {
-                LoginActivity.appDatabase.dao().addUser(user)
-                Toast.makeText(activity, "Succesfully registered!", Toast.LENGTH_SHORT).show()
-                toTheLoginFragment();
-            }
-        }
+    fun SignUpButtonExecute(username: String, password: String,weight:String,height:String, gender: String) {
+
+        val w=weight.toIntOrNull()
+        val h=height.toIntOrNull()
+     if(weight.toIntOrNull()==null|| height.toIntOrNull()==null)
+     {
+    Toast.makeText(activity, "Weight and height should be numbers", Toast.LENGTH_SHORT).show()
+     }
+        else
+     {
+         if (username == "" || password == "") {
+             Toast.makeText(activity, "You didn't fill all the boxes", Toast.LENGTH_SHORT).show()
+         } else {
+             val user = User()
+             user.setUsername(username)
+             user.setPassword(password)
+             if (w != null) {
+                 user.setWeight(w)
+             }
+             if (h != null) {
+                 user.setHeight(h)
+             }
+              user.setGender(gender)
+              if (findUser(user)) {
+                  Toast.makeText(activity, "User is already registered", Toast.LENGTH_SHORT).show()
+              } else {
+                  LoginActivity.appDatabase.dao().addUser(user)
+                  Toast.makeText(activity, "Succesfully registered!", Toast.LENGTH_SHORT).show()
+                  toTheLoginFragment();
+              }
+         }
+     }
+
+
     }
 
 

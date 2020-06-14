@@ -66,17 +66,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/Password"
-        app:layout_constraintBottom_toBottomOf="@id/signup_button"
+        app:layout_constraintBottom_toTopOf="@id/gender"
         app:layout_constraintStart_toStartOf="@id/g_left_side"
         app:layout_constraintEnd_toEndOf="@id/g_right_side">
 
         <EditText
-            android:id="@+id/weigth"
+            android:id="@+id/weight"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_weight="1"
-            android:text="weight"></EditText>
+            android:hint="@string/weight"></EditText>
 
         <EditText
             android:id="@+id/height"
@@ -84,22 +84,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_weight="1"
-            android:text="@string/height"></EditText>
+            android:hint="@string/height"></EditText>
 
     </LinearLayout>
 
-
-        <RadioButton
-            android:id="@+id/rB_female"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/female"
-            app:layout_constraintStart_toStartOf="@id/g_left_side"
-            app:layout_constraintTop_toBottomOf="@id/Password"
-            app:layout_constraintEnd_toEndOf="@id/g_right_side"
-            app:layout_constraintBottom_toBottomOf="@id/linear1"
-            app:layout_constraintVertical_bias="0.1"
-            />
 
 
     <Button
@@ -116,6 +104,30 @@
         app:layout_constraintTop_toBottomOf="@id/Password"
         app:layout_constraintVertical_bias="0.711" />
 
+    <RadioGroup
+        android:id="@+id/gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/signup_button"
+        app:layout_constraintEnd_toStartOf="@+id/g_right_side"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/g_left_side"
+        app:layout_constraintTop_toBottomOf="@id/linear1"
+        app:layout_constraintVertical_bias="0.711">
 
+        <RadioButton
+            android:id="@+id/female"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20sp"
+            android:text="@string/female"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/male"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/male" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

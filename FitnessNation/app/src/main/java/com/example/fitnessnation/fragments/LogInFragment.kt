@@ -79,6 +79,7 @@ class LogInFragment : Fragment() {
             {
                 user.setWeight(usr.getWeight());
                 user.setHeight(usr.getHeight());
+                user.setGender(usr.getGender());
                 return true
             }
         }
