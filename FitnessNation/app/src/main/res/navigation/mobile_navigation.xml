@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_profile">
+    app:startDestination="@id/navigation_profile">
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -15,7 +15,11 @@
         android:id="@+id/navigation_meal"
         android:name="com.example.fitnessnation.fragments.AddMealFragment"
         android:label="@string/title_meal"
-        tools:layout="@layout/fragment_addmeal" />
+        tools:layout="@layout/fragment_addmeal" >
+        <argument
+            android:name="user"
+            app:argType="com.example.fitnessnation.User" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"

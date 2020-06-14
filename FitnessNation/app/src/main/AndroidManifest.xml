@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fitnessnation">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+
 
     <application
         android:allowBackup="true"
@@ -12,9 +14,7 @@
         <activity
             android:name=".activitites.BottomNavigationActivity"
             android:label="@string/title_activity_bottom_navigation"></activity>
-        <activity
-            android:name=".activitites.BottomNavigationAcitivity"
-            android:label="@string/title_activity_bottom_navigation_acitivity" />
+
         <activity android:name=".activitites.ProfileActivity" />
         <activity android:name=".activitites.LoginActivity" />
         <activity android:name=".activitites.MainActivity">

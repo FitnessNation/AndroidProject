@@ -60,13 +60,15 @@ class SignUpFragment : Fragment() {
         signup_button.setOnClickListener(View.OnClickListener {
             val username = Username.getText().toString()
             val password = Password.getText().toString()
-           SignUpButtonExecute(username, password)
+            val weight=0.0
+            val height=0.0
+           SignUpButtonExecute(username, password,weight,height)
             users = LoginActivity.appDatabase.dao().getUsers()
 
         })
     }
 
-    fun SignUpButtonExecute(username: String, password: String) {
+    fun SignUpButtonExecute(username: String, password: String,weight:Double,height:Double) {
         if (username == "" || password == "") {
             Toast.makeText(
                 activity,
@@ -77,6 +79,8 @@ class SignUpFragment : Fragment() {
             val user = User()
             user.setUsername(username)
             user.setPassword(password)
+            user.setWeight(weight)
+            user.setHeight(height)
             if (findUser(user)) {
                 Toast.makeText(activity, "User is already registered", Toast.LENGTH_SHORT).show()
             } else {

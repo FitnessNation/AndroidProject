@@ -44,7 +44,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/g_left_side"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193" />
+        app:layout_constraintVertical_bias="0.134" />
 
     <EditText
         android:id="@+id/Password"
@@ -58,7 +58,49 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/g_left_side"
         app:layout_constraintTop_toTopOf="@id/Username"
-        app:layout_constraintVertical_bias="0.236" />
+        app:layout_constraintVertical_bias="0.16" />
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/Password"
+        app:layout_constraintBottom_toBottomOf="@id/signup_button"
+        app:layout_constraintStart_toStartOf="@id/g_left_side"
+        app:layout_constraintEnd_toEndOf="@id/g_right_side">
+
+        <EditText
+            android:id="@+id/weigth"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:text="weight"></EditText>
+
+        <EditText
+            android:id="@+id/height"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:text="@string/height"></EditText>
+
+    </LinearLayout>
+
+
+        <RadioButton
+            android:id="@+id/rB_female"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/female"
+            app:layout_constraintStart_toStartOf="@id/g_left_side"
+            app:layout_constraintTop_toBottomOf="@id/Password"
+            app:layout_constraintEnd_toEndOf="@id/g_right_side"
+            app:layout_constraintBottom_toBottomOf="@id/linear1"
+            app:layout_constraintVertical_bias="0.1"
+            />
+
 
     <Button
         android:id="@+id/signup_button"
@@ -72,6 +114,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/g_left_side"
         app:layout_constraintTop_toBottomOf="@id/Password"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintVertical_bias="0.711" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

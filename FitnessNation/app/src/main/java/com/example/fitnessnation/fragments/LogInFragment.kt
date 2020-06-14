@@ -40,9 +40,9 @@ class LogInFragment : Fragment() {
       login_button.setOnClickListener(View.OnClickListener {
           val username = Username.getText().toString()
           val password = Password.getText().toString()
-          LoginButtonExecute(username, password)
+         LoginButtonExecute(username, password)
 
-          users = LoginActivity.appDatabase.dao().getUsers()
+         users = LoginActivity.appDatabase.dao().getUsers()
       })
 
     }
@@ -75,7 +75,12 @@ class LogInFragment : Fragment() {
 
     fun findUser(user: User): Boolean {
         for (usr in users!!) {
-            if (usr.getUsername().equals(user.getUsername()) && usr.getPassword().equals(user.getPassword())) return true
+            if (usr.getUsername().equals(user.getUsername()) && usr.getPassword().equals(user.getPassword()))
+            {
+                user.setWeight(usr.getWeight());
+                user.setHeight(usr.getHeight());
+                return true
+            }
         }
         return false
     }
