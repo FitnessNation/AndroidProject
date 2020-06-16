@@ -10,11 +10,11 @@ import java.util.List;
 
 public class Recycler extends RecyclerView.Adapter<Recycler.MyViewHolder> {
 
-    private List<String> itemList;
+    private List<Meal> mealList;
 
-    public Recycler(List<String> itemList)
+    public Recycler(List<Meal> mealList)
     {
-        this.itemList = itemList;
+        this.mealList = mealList;
     }
 
     @NonNull
@@ -28,12 +28,12 @@ public class Recycler extends RecyclerView.Adapter<Recycler.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.items.setText(itemList.get(position));
+        holder.items.setText((CharSequence) mealList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return itemList.size();
+        return mealList.size();
     }
 
     public static  class MyViewHolder extends RecyclerView.ViewHolder {

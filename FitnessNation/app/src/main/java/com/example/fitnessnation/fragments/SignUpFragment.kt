@@ -1,7 +1,6 @@
 package com.example.fitnessnation.fragments
 
 import android.os.Bundle
-import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessnation.LogInFragment
 
@@ -17,12 +15,9 @@ import com.example.fitnessnation.R
 import com.example.fitnessnation.Recycler
 import com.example.fitnessnation.User
 import com.example.fitnessnation.activitites.LoginActivity
-import kotlinx.android.synthetic.main.fragment_log_in.*
 import kotlinx.android.synthetic.main.fragment_log_in.Password
 import kotlinx.android.synthetic.main.fragment_log_in.Username
 import kotlinx.android.synthetic.main.fragment_sign_up.*
-import java.sql.Types.NULL
-import java.util.ArrayList
 
 
 class SignUpFragment : Fragment() {
@@ -52,7 +47,7 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        users = LoginActivity.appDatabase.dao().getUsers()
+        users = LoginActivity.appDatabase.userDao().getUsers()
 
         username = view!!.findViewById(R.id.Username)
         password = view!!.findViewById(R.id.Password)
@@ -115,7 +110,7 @@ class SignUpFragment : Fragment() {
                 }
 
 
-            users = LoginActivity.appDatabase.dao().getUsers()
+            users = LoginActivity.appDatabase.userDao().getUsers()
 
         })
     }
@@ -150,7 +145,7 @@ class SignUpFragment : Fragment() {
               if (findUser(user)) {
                   Toast.makeText(activity, "User is already registered", Toast.LENGTH_SHORT).show()
               } else {
-                  LoginActivity.appDatabase.dao().addUser(user)
+                  LoginActivity.appDatabase.userDao().addUser(user)
                   Toast.makeText(activity, "Succesfully registered!", Toast.LENGTH_SHORT).show()
                   toTheLoginFragment();
               }

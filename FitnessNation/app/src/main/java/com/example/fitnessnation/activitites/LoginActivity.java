@@ -1,6 +1,8 @@
 package com.example.fitnessnation.activitites;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 import androidx.room.migration.Migration;
@@ -20,15 +22,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     };*/
 
-
-
-
     public static AppDatabase appDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"userdatabase").allowMainThreadQueries().build();
+        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"fitnessdatabase").allowMainThreadQueries().build();
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.primary_frame_s_session, MenuLoginFragment.newInstance()).commitNow();
         }

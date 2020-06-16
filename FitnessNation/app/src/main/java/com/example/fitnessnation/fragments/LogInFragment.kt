@@ -30,7 +30,7 @@ class LogInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        users = LoginActivity.appDatabase.dao().getUsers()
+        users = LoginActivity.appDatabase.userDao().getUsers()
 
       username = view!!.findViewById(R.id.Username)
       password = view!!.findViewById(R.id.Password)
@@ -42,7 +42,7 @@ class LogInFragment : Fragment() {
           val password = Password.getText().toString()
          LoginButtonExecute(username, password)
 
-         users = LoginActivity.appDatabase.dao().getUsers()
+         users = LoginActivity.appDatabase.userDao().getUsers()
       })
 
     }
