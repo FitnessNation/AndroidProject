@@ -27,12 +27,17 @@ public class User implements Serializable {//serializable is for passing the obj
     @ColumnInfo(name = "user_height")
     private int height=0;
 
-
     @ColumnInfo(name = "user_password")
     private String password;
 
     @ColumnInfo(name = "user_gender")
     private String gender="nothing";
+
+    @ColumnInfo(name = "user_weight_choice")
+   protected boolean weightChoice;//1 is weight gain 0 is weight loss
+
+    @ColumnInfo(name = "user_goal_weight")
+    private int goalWeight=0;
 
 
     public String getUsername() {
@@ -43,7 +48,9 @@ public class User implements Serializable {//serializable is for passing the obj
     }
     public int getWeight() { return weight; }
     public int getHeight() {return height; }
+    public int getGoalWeight() {return goalWeight; }
     public String getGender() {return gender; }
+    public boolean getChoice() {return weightChoice; }
 
 
     public void setUsername(String username) {
@@ -52,7 +59,9 @@ public class User implements Serializable {//serializable is for passing the obj
     public void setGender(String gender) {this.gender=gender; }
     public void setPassword(String password) {this.password = password; }
     public void setWeight(int weight) { this.weight = weight; }
+    public void setGoalWeight(int goalWeight) { this.goalWeight = goalWeight; }
     public void setHeight(int height) {this.height=height; }
+    public void setChoice(boolean choice) {this.weightChoice=choice; }
 
 
 }

@@ -46,9 +46,6 @@ class ProfileFragment : Fragment() {
             imageOfGender.setImageResource(R.drawable.woman)
         }
 
-
       //  weight.text=a;
-
-
     }
 }

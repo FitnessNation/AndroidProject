@@ -63,6 +63,7 @@ class SignUpFragment : Fragment() {
             val username = Username.getText().toString()
             val password = Password.getText().toString()
             val weight = weight.getText().toString()
+            var goalWeight=goalweight.getText().toString()
            // weight.toIntOrNull();
 
             val height = height.getText().toString()
@@ -70,35 +71,63 @@ class SignUpFragment : Fragment() {
 
 
             var gender:String="female"
+            var weight_choice=false;
+
+
+
 
                 if(female.isChecked())
                 {
                     gender="female"
-                   // Toast.makeText(activity, "Female", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "Female", Toast.LENGTH_SHORT).show()
+                    if(weightloss.isChecked())
+                    {
+                        weight_choice=false;
+                        SignUpButtonExecute(username, password,weight,height,gender,weight_choice,goalWeight)
+                    }
+                    else if(weightgain.isChecked())
+                    {
+                        weight_choice=true;
+                        SignUpButtonExecute(username, password,weight,height,gender,weight_choice,goalWeight)
+                    } else
+                    {
+                        Toast.makeText(activity, "You didn't fill all the boxes", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 else if(male.isChecked())
                 {
-                    gender="male"
-                   // Toast.makeText(activity, "Male", Toast.LENGTH_SHORT).show()
-                }
-                else
+                    if(weightloss.isChecked())
+                    {
+                        weight_choice=false;
+                        SignUpButtonExecute(username, password,weight,height,gender,weight_choice,goalWeight)
+                    }
+                    else if(weightgain.isChecked())
+                    {
+                        weight_choice=true;
+                        SignUpButtonExecute(username, password,weight,height,gender,weight_choice,goalWeight)
+                    } else
+                    {
+                        Toast.makeText(activity, "You didn't fill all the boxes", Toast.LENGTH_SHORT).show()
+                    }
+                } else
                 {
-                    Toast.makeText(activity, "You didn't fill all the boxes11", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "You didn't fill all the boxes", Toast.LENGTH_SHORT).show()
                 }
 
-           SignUpButtonExecute(username, password,weight,height,gender)
+
             users = LoginActivity.appDatabase.dao().getUsers()
 
         })
     }
 
-    fun SignUpButtonExecute(username: String, password: String,weight:String,height:String, gender: String) {
+    fun SignUpButtonExecute(username: String, password: String,weight:String,height:String, gender: String,weight_choice:Boolean,goalweight:String) {
 
+        val gw=goalweight.toIntOrNull()
         val w=weight.toIntOrNull()
         val h=height.toIntOrNull()
-     if(weight.toIntOrNull()==null|| height.toIntOrNull()==null)
+     if(weight.toIntOrNull()==null|| height.toIntOrNull()==null||goalweight.toIntOrNull()==null)
      {
-    Toast.makeText(activity, "Weight and height should be numbers", Toast.LENGTH_SHORT).show()
+    Toast.makeText(activity, "Weight, goalweight and height should be numbers", Toast.LENGTH_SHORT).show()
      }
         else
      {
@@ -113,6 +142,9 @@ class SignUpFragment : Fragment() {
              }
              if (h != null) {
                  user.setHeight(h)
+             }
+             if (gw != null) {
+                 user.setGoalWeight(gw)
              }
               user.setGender(gender)
               if (findUser(user)) {
