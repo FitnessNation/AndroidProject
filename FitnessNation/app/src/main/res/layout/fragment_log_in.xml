@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/silver"
+    android:background="@color/dark_orange"
     tools:context="fragments.LogInFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -64,7 +64,7 @@
         android:id="@+id/login_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_drawable_button"
+        android:background="@color/orange"
         android:text="@string/Login"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
