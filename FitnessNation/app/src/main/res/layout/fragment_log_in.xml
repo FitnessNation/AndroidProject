@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_orange"
+    android:background="@color/silver"
     tools:context="fragments.LogInFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -44,7 +44,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/g_left_side"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193" />
+        app:layout_constraintVertical_bias="0.208" />
 
     <EditText
         android:id="@+id/Password"
@@ -58,13 +58,12 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/g_left_side"
         app:layout_constraintTop_toTopOf="@id/Username"
-        app:layout_constraintVertical_bias="0.236" />
+        app:layout_constraintVertical_bias="0.166" />
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
         android:text="@string/Login"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,6 +71,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/g_left_side"
         app:layout_constraintTop_toBottomOf="@id/Password"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintVertical_bias="0.304"
+        android:background="@drawable/shape_drawable_button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

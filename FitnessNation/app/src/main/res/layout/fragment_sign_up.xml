@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pink"
+    android:background="@color/silver"
     tools:context="fragments.SignUpFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -106,7 +106,7 @@
         android:id="@+id/signup_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
+       android:textColor="@color/white"
         android:text="@string/SignUp"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -114,7 +114,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/g_left_side"
         app:layout_constraintTop_toBottomOf="@id/Password"
-        app:layout_constraintVertical_bias="0.711" />
+        app:layout_constraintVertical_bias="0.711"
+        android:background="@drawable/shape_drawable_button"/>
 
     <RadioGroup
         android:id="@+id/gender"
