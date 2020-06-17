@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Entity(tableName = "meals")
 public class Meal  {//serializable is for passing the object to the next activity
 
-    public Meal(String name, String imagePath, int calorie, String recipe) {
+    public Meal(String name, int imagePath, int calorie, String recipe) {
         this.name=name;
         this.imagePath = imagePath;
         this.calorie = calorie;
@@ -27,38 +27,38 @@ public class Meal  {//serializable is for passing the object to the next activit
     @NonNull
 
     @ColumnInfo(name = "meal_name")
-    protected String name;
+    private String name;
 
     @ColumnInfo(name = "meal_image")
-    protected String imagePath;
+    private int imagePath;
 
     @ColumnInfo(name = "meal_calorie")
-    protected int calorie=0;
+    private int calorie=0;
 
     @ColumnInfo(name = "meal_recipe")
-    protected String recipe;
+    private String recipe;
 
 
 
-    public String getMealName() { return name; }
-    public String getMealImagePath() {
+    public String getName() { return name; }
+    public int getImagePath() {
         return imagePath;
     }
-    public int getMealCalorie() { return calorie; }
-    public String getMealRecipe() {return recipe; }
+    public int getCalorie() { return calorie; }
+    public String getRecipe() {return recipe; }
 
 
-    public void setMealName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
-    public void setMealImagePath(String imagePath) {this.imagePath=imagePath; }
-    public void setMealCalorie(int calorie) {this.calorie=calorie; }
-    public void setMealRecipe(String recipe) { this.recipe=recipe; }
+    public void setImagePath(int imagePath) {this.imagePath=imagePath; }
+    public void setCalorie(int calorie) {this.calorie=calorie; }
+    public void setRecipe(String recipe) { this.recipe=recipe; }
 
     public static Meal[] populateData() {
         return new Meal[] {
-                new Meal("Ot Berries", "R.drawable.oatmeal_berries.jpg",120, "Cook it 10 minutes"),
-                new Meal("Graefruit", "R.drawable.grapefruitjpg.jpg",10, "Peal it")
+                new Meal("Green tea", R.drawable.green_tea,120, "Cook it 10 minutes"),
+                new Meal("Grapefruit", R.drawable.grapefruitjpg,10, "Peal it")
 
         };
     }

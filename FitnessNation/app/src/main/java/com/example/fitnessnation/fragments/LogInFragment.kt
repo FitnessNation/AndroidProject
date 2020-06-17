@@ -31,7 +31,10 @@ class LogInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-    users= LoginActivity.fitnessRepository.getUsersTask();
+      users= LoginActivity.fitnessRepository.getUsersTask();
+      meals= LoginActivity.fitnessRepository.getMealsTask();
+
+        (meals as MutableList<Meal>?)?.get(0)?.imagePath?.let { foodImage.setImageResource(it) }
 
 
       username = view!!.findViewById(R.id.Username)

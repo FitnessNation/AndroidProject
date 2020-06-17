@@ -22,18 +22,17 @@ public class LoginActivity extends AppCompatActivity {
     };*/
 
     public static FitnessRepository fitnessRepository;
-  // public static AppDatabase appDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         fitnessRepository=new FitnessRepository(getApplicationContext());
-        //appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"fitnessdatabase").allowMainThreadQueries().build();
-       // appDatabase.getInstance(getApplicationContext());
-       // Meal meal[];
         //fitnessRepository.mealInsertTask(Meal.populateData());
-      //  appDatabase = ApplicationController.getAppDatabase();
+
+
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.primary_frame_s_session, MenuLoginFragment.newInstance()).commitNow();
         }
