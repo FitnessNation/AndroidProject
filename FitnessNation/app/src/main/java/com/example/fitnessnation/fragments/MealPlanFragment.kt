@@ -31,7 +31,7 @@ class MealPlanFragment : Fragment() {
         gridLayoutManager =GridLayoutManager(activity,3)
         recyclerView?.setLayoutManager(gridLayoutManager )
         adapter = Recycler(meals)
-      //  recyclerView?.setAdapter(adapter)
+        recyclerView?.setAdapter(adapter)
        // (meals as MutableList<Meal>?)?.get(15)?.imagePath?.let { foodImage.setImageResource(it) }
     }
 
