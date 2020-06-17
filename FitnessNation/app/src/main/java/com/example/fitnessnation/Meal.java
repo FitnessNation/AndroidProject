@@ -5,8 +5,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "meals")
-public class Meal  {//serializable is for passing the object to the next activity
+public class Meal  implements Serializable {//serializable is for passing the object to the next activity
 
     public Meal(String name,String type, int imagePath, int calorie, String description, boolean choice) {
         this.name=name;

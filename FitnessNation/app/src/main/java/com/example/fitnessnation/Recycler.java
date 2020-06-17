@@ -2,6 +2,7 @@ package com.example.fitnessnation;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.fitnessnation.activitites.FoodActivity;
+
 import java.util.List;
 
 public class Recycler extends RecyclerView.Adapter<Recycler.MyViewHolder> {
@@ -40,12 +44,11 @@ public class Recycler extends RecyclerView.Adapter<Recycler.MyViewHolder> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent intent=new Intent(context, FoodActivity.class);
-                intent.putExtra("FoodName",mealList.get(position).getName());
-                intent.putExtra("FoodType",mealList.get(position).getType());
-                intent.putExtra("FoodDescription",mealList.get(position).getDescription());
-                intent.putExtra("FoodPic",mealList.get(position).getImagePath());
-                context.startActivity(intent);*/
+                context=v.getContext();
+               Intent intent=new Intent(context, FoodActivity.class);
+                intent.putExtra("Meal",mealList.get(position));
+
+               context.startActivity(intent);
 
 
             }
