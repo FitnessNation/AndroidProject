@@ -9,11 +9,19 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.Contract;
+
 import java.io.Serializable;
 
 @Entity(tableName = "meals")
-public class Meal implements Serializable {//serializable is for passing the object to the next activity
+public class Meal  {//serializable is for passing the object to the next activity
 
+    public Meal(String name, String imagePath, int calorie, String recipe) {
+        this.name=name;
+        this.imagePath = imagePath;
+        this.calorie = calorie;
+        this.recipe = recipe;
+    }
 
     @PrimaryKey
     @NonNull
@@ -32,7 +40,6 @@ public class Meal implements Serializable {//serializable is for passing the obj
 
 
 
-
     public String getMealName() { return name; }
     public String getMealImagePath() {
         return imagePath;
@@ -48,5 +55,12 @@ public class Meal implements Serializable {//serializable is for passing the obj
     public void setMealCalorie(int calorie) {this.calorie=calorie; }
     public void setMealRecipe(String recipe) { this.recipe=recipe; }
 
+    public static Meal[] populateData() {
+        return new Meal[] {
+                new Meal("Ot Berries", "R.drawable.oatmeal_berries.jpg",120, "Cook it 10 minutes"),
+                new Meal("Graefruit", "R.drawable.grapefruitjpg.jpg",10, "Peal it")
+
+        };
+    }
 
 }

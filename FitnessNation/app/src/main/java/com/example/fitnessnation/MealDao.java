@@ -18,4 +18,7 @@ public interface MealDao {
 
     @Delete
     public void deleteUser(Meal meal);
+
+    @Insert
+    void insertAll(Meal... meals);
 }

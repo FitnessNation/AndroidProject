@@ -47,7 +47,7 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        users = LoginActivity.appDatabase.userDao().getUsers()
+        users= LoginActivity.fitnessRepository.getUsersTask();
 
         username = view!!.findViewById(R.id.Username)
         password = view!!.findViewById(R.id.Password)
@@ -110,7 +110,7 @@ class SignUpFragment : Fragment() {
                 }
 
 
-            users = LoginActivity.appDatabase.userDao().getUsers()
+            users= LoginActivity.fitnessRepository.getUsersTask();
 
         })
     }
@@ -145,7 +145,8 @@ class SignUpFragment : Fragment() {
               if (findUser(user)) {
                   Toast.makeText(activity, "User is already registered", Toast.LENGTH_SHORT).show()
               } else {
-                  LoginActivity.appDatabase.userDao().addUser(user)
+                 LoginActivity.fitnessRepository.addUserTask(user);
+                 // LoginActivity.appDatabase.userDao().addUser(user)
                   Toast.makeText(activity, "Succesfully registered!", Toast.LENGTH_SHORT).show()
                   toTheLoginFragment();
               }

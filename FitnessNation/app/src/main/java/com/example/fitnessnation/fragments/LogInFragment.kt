@@ -17,6 +17,7 @@ class LogInFragment : Fragment() {
     private var username: EditText? = null
     private var password: EditText? = null
     private var users: List<User>? = null
+    private var meals: List<Meal>? = null
     private var loginButton: Button? = null
     private var vieww: View? = null
 
@@ -30,7 +31,8 @@ class LogInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        users = LoginActivity.appDatabase.userDao().getUsers()
+    users= LoginActivity.fitnessRepository.getUsersTask();
+
 
       username = view!!.findViewById(R.id.Username)
       password = view!!.findViewById(R.id.Password)
@@ -42,7 +44,7 @@ class LogInFragment : Fragment() {
           val password = Password.getText().toString()
          LoginButtonExecute(username, password)
 
-         users = LoginActivity.appDatabase.userDao().getUsers()
+
       })
 
     }
