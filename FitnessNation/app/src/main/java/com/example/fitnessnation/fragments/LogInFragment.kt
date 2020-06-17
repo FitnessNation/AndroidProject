@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessnation.activitites.BottomNavigationActivity
 import com.example.fitnessnation.activitites.LoginActivity
 import kotlinx.android.synthetic.main.fragment_log_in.*
@@ -17,7 +18,7 @@ class LogInFragment : Fragment() {
     private var username: EditText? = null
     private var password: EditText? = null
     private var users: List<User>? = null
-    private var meals: List<Meal>? = null
+
     private var loginButton: Button? = null
     private var vieww: View? = null
 
@@ -31,10 +32,9 @@ class LogInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-      users= LoginActivity.fitnessRepository.getUsersTask();
-      meals= LoginActivity.fitnessRepository.getMealsTask();
 
-        (meals as MutableList<Meal>?)?.get(0)?.imagePath?.let { foodImage.setImageResource(it) }
+
+      users= LoginActivity.fitnessRepository.getUsersTask();
 
 
       username = view!!.findViewById(R.id.Username)

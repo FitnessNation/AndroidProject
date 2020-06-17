@@ -21,7 +21,7 @@ public class Recycler extends RecyclerView.Adapter<Recycler.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        TextView textView = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.text_view_layout,parent,false);
+        TextView textView = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_item_meal,parent,false);
         MyViewHolder myViewHolder = new MyViewHolder(textView);
         return myViewHolder;
     }

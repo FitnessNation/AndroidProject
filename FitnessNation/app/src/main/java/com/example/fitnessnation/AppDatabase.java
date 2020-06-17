@@ -10,7 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.Executors;
 
-@androidx.room.Database(entities = {User.class,Meal.class}, version = 5, exportSchema = false)
+@androidx.room.Database(entities = {User.class,Meal.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();

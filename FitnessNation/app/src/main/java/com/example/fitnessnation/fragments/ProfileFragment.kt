@@ -32,7 +32,8 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       user= arguments?.getSerializable("user") as User?
+        user=BottomNavigationActivity.user;
+      // user= arguments?.getSerializable("user") as User?
         weight.text= user?.getWeight().toString();
         height.text= user?.getHeight().toString();
         tv_username.text= user?.getUsername();
