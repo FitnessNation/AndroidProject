@@ -13,8 +13,11 @@ public interface MealDao {
     @Insert
     public void addMeal(Meal meal);
 
-    @Query("select * from meals")
-    public List<Meal> getMeals();
+    @Query("select * from meals where meal_choice=0")
+    public List<Meal> getWLossMeals();
+
+    @Query("select * from meals where meal_choice=1")
+    public List<Meal> getWGainMeals();
 
     @Delete
     public void deleteUser(Meal meal);

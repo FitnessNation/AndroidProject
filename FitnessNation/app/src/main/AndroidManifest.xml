@@ -12,13 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activitites.FoodActivity"></activity>
+
+        <activity android:name=".activitites.FoodActivity"
+            android:screenOrientation="sensor"></activity>
         <activity
             android:name=".activitites.BottomNavigationActivity"
-            android:label="@string/title_activity_bottom_navigation" />
-        <activity android:name=".activitites.ProfileActivity" />
-        <activity android:name=".activitites.LoginActivity" />
-        <activity android:name=".activitites.MainActivity">
+            android:label="@string/title_activity_bottom_navigation"
+            android:screenOrientation="sensor"/>
+
+        <activity android:name=".activitites.LoginActivity"
+            android:screenOrientation="sensor"/>
+        <activity android:name=".activitites.MainActivity"
+            android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

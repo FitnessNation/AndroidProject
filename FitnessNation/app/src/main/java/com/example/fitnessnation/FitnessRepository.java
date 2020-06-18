@@ -22,8 +22,12 @@ public class FitnessRepository {
         new AddUserTask().execute(user);
     }
 
-    public List<Meal> getMealsTask() throws ExecutionException, InterruptedException {
-        return new GetMealsTask().execute().get();
+    public List<Meal> getWLossMealsTask() throws ExecutionException, InterruptedException {
+        return new GetWLossMealsTask().execute().get();
+    }
+
+    public List<Meal> getWGainMealsTask() throws ExecutionException, InterruptedException {
+        return new GetWGainMealsTask().execute().get();
     }
 
     public List<User> getUsersTask() throws ExecutionException, InterruptedException {
@@ -47,11 +51,26 @@ public class FitnessRepository {
     }
 
 
-    private class GetMealsTask extends AsyncTask<Void, Void, List<Meal>> {
+    private class GetWLossMealsTask extends AsyncTask<Void, Void, List<Meal>> {
 
         @Override
         protected List<Meal>  doInBackground(Void...params) {
-            return  appDatabase.mealDao().getMeals();
+            return  appDatabase.mealDao().getWLossMeals();
+
+        }
+
+        @Override
+        protected void onPostExecute(List<Meal> meal) {
+            super.onPostExecute(meal);
+            //    listener.actionSuccess();
+        }
+    }
+
+    private class GetWGainMealsTask extends AsyncTask<Void, Void, List<Meal>> {
+
+        @Override
+        protected List<Meal>  doInBackground(Void...params) {
+            return  appDatabase.mealDao().getWGainMeals();
 
         }
 

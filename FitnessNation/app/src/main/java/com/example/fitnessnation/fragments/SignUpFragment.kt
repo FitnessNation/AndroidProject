@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessnation.LogInFragment
 
 import com.example.fitnessnation.R
-import com.example.fitnessnation.Recycler
+import com.example.fitnessnation.RecyclerViewAdapter
 import com.example.fitnessnation.User
 import com.example.fitnessnation.activitites.LoginActivity
 import kotlinx.android.synthetic.main.fragment_log_in.Password
@@ -28,7 +28,7 @@ class SignUpFragment : Fragment() {
     private var vieww: View? = null
     lateinit var recyclerView: RecyclerView
     private var layoutManager: RecyclerView.LayoutManager? = null
-    private var adapter: Recycler? = null
+    private var adapter: RecyclerViewAdapter? = null
 
     companion object {
         fun newInstance() = SignUpFragment()

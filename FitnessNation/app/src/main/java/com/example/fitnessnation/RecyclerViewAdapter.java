@@ -16,13 +16,13 @@ import com.example.fitnessnation.activitites.FoodActivity;
 
 import java.util.List;
 
-public class Recycler extends RecyclerView.Adapter<Recycler.MyViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     private Context context;
     private List<Meal> mealList;
 
 
-    public Recycler(List<Meal> mealList)
+    public RecyclerViewAdapter(List<Meal> mealList)
     {
         this.mealList = mealList;
     }
