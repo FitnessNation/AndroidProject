@@ -1,6 +1,8 @@
 package com.example.fitnessnation
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,13 +28,18 @@ class LogInFragment : Fragment() {
         fun newInstance()= LogInFragment()
     }
 
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,  savedInstanceState: Bundle?)
-            = inflater.inflate(R.layout.fragment_log_in, container, false)
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,  savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_log_in, container, false)
+
+    }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
+        loadData()
 
       users= LoginActivity.fitnessRepository.getUsersTask();
 
@@ -45,10 +52,13 @@ class LogInFragment : Fragment() {
       login_button.setOnClickListener(View.OnClickListener {
           val username = Username.getText().toString()
           val password = Password.getText().toString()
+
+
          LoginButtonExecute(username, password)
-
-
       })
+
+
+
 
     }
 
@@ -61,6 +71,7 @@ class LogInFragment : Fragment() {
             user.setUsername(username)
             user.setPassword(password)
             if (findUser(user)) {
+                saveData()
                 Toast.makeText(activity, "You are logged in", Toast.LENGTH_SHORT).show()
                 goToNextActivity(user)
                 
@@ -93,5 +104,44 @@ class LogInFragment : Fragment() {
         return false
     }
 
+
+    private fun saveData() {
+
+        val name  =Username.text.toString();
+        val password = Password.text.toString();
+
+        val context: Context? = activity
+        val sharedPref =  getActivity()?.getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor? = sharedPref?.edit() ;
+        editor?.apply{
+            putString("NAME",name);
+            putString("PASSWORD",password);
+            putBoolean("SWITCH",switch_remember.isChecked)
+        }
+        if (editor != null) {
+            editor.commit()
+        }
+
+    }
+
+    private fun loadData() {
+
+        val sharedPref = getActivity()?.getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
+
+        val savedSwitch= sharedPref?.getBoolean("SWITCH",false)
+        var savedName: String="";
+        var savedPass: String=""
+       if (savedSwitch==true) {
+           savedName = sharedPref?.getString("NAME", "").toString()
+           savedPass = sharedPref?.getString("PASSWORD", "").toString()
+       }
+        Username?.setText(savedName);
+        Password?.setText(savedPass);
+        if (savedSwitch != null) {
+            switch_remember.isChecked=savedSwitch
+        }
+
+
+    }
 
 }
