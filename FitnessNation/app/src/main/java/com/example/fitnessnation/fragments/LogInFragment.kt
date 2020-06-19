@@ -49,15 +49,13 @@ class LogInFragment : Fragment() {
 
         loginButton = view!!.findViewById(R.id.login_button)
 
-      login_button.setOnClickListener(View.OnClickListener {
+      login_button.setOnClickListener {
           val username = Username.getText().toString()
           val password = Password.getText().toString()
 
 
-         LoginButtonExecute(username, password)
-      })
-
-
+          LoginButtonExecute(username, password)
+      }
 
 
     }
