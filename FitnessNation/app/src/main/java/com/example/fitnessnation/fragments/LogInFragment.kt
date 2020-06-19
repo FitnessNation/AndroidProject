@@ -98,6 +98,7 @@ class LogInFragment : Fragment() {
                 user.setGender(usr.getGender());
                 user.setChoice(usr.getChoice());
                 user.setGoalWeight(usr.getGoalWeight());
+                Toast.makeText(activity,user.getWeight().toString(),Toast.LENGTH_LONG)
                 return true
             }
         }

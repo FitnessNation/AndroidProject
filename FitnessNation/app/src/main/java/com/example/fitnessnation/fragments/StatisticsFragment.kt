@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.NotificationCompatSideChannelService
 import androidx.core.content.PermissionChecker.checkSelfPermission
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -31,12 +32,53 @@ class StatisticsFragment : Fragment() {
         return root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        user= arguments?.getSerializable("user") as User?
+        user=BottomNavigationActivity.user;
 
-        name.text= user?.getUsername() ?: "nothing";
-      //  Toast.makeText(activity, user!!.getUsername(), Toast.LENGTH_SHORT).show()
+        old_weight.setText(user?.weight.toString())
+        goal_weight.setText(user?.goalWeight.toString())
+
+        var current=current_weight.getText().toString().toIntOrNull()
+        var old=old_weight.getText().toString().toIntOrNull()
+        var goal=goal_weight.getText().toString().toIntOrNull()
+
+        btn_result.setOnClickListener({
+
+            if(user?.choice==true)//if it wants to gain weight
+        {
+            Toast.makeText(activity,"GAIN",Toast.LENGTH_LONG)
+            /*if( current!! >= goal!!)
+            {
+                Toast.makeText(activity,"CONGRATULATIONS YOU REACHED YOUR GOAL",Toast.LENGTH_LONG)
+            }
+            else
+            {
+
+                Toast.makeText(activity,"DON'T QUIT YOU WILL REACH YOUR GOAL",Toast.LENGTH_LONG)
+            }
+
+        }
+            else
+            {
+                if(user?.choice==false)//if it wants to gain loss
+                {
+
+                    if( current!! <= goal!!)
+                    {
+                        Toast.makeText(activity,"CONGRATULATIONS YOU REACHED YOUR GOAL",Toast.LENGTH_LONG)
+                    }
+                    else
+                    {
+
+                        Toast.makeText(activity,"DON'T QUIT YOU WILL REACH YOUR GOAL",Toast.LENGTH_LONG)
+                    }
+
+                }*/
+            }
+        })
+
 
 
 
