@@ -1,16 +1,15 @@
 package com.example.fitnessnation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessnation.LogInFragment
-
 import com.example.fitnessnation.R
 import com.example.fitnessnation.RecyclerViewAdapter
 import com.example.fitnessnation.User
@@ -71,17 +70,19 @@ class SignUpFragment : Fragment() {
 
 
 
-                if(female.isChecked())
+                if(female.isChecked)
                 {
                     gender="female"
                     Toast.makeText(activity, "Female", Toast.LENGTH_SHORT).show()
-                    if(weightloss.isChecked())
+                    if(weightloss.isChecked)
                     {
+                        Toast.makeText(activity, "LOOSE", Toast.LENGTH_SHORT).show()
                         weight_choice=false;
                         SignUpButtonExecute(username, password,weight,height,gender,weight_choice,goalWeight)
                     }
-                    else if(weightgain.isChecked())
+                    else if(weightgain.isChecked)
                     {
+                        Toast.makeText(activity, "GAIN", Toast.LENGTH_SHORT).show()
                         weight_choice=true;
                         SignUpButtonExecute(username, password,weight,height,gender,weight_choice,goalWeight)
                     } else
@@ -142,11 +143,11 @@ class SignUpFragment : Fragment() {
                  user.setGoalWeight(gw)
              }
               user.setGender(gender)
+             user.setChoice(weight_choice)
               if (findUser(user)) {
                   Toast.makeText(activity, "User is already registered", Toast.LENGTH_SHORT).show()
               } else {
                  LoginActivity.fitnessRepository.addUserTask(user);
-                 // LoginActivity.appDatabase.userDao().addUser(user)
                   Toast.makeText(activity, "Succesfully registered!", Toast.LENGTH_SHORT).show()
                   toTheLoginFragment();
               }
