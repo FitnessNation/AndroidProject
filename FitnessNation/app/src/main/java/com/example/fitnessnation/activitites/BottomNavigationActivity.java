@@ -26,15 +26,7 @@ public class BottomNavigationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bottom_navigation);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         user= (User) getIntent().getSerializableExtra("user");
-        if (user.getChoice()==true)
-        {
-            Toast.makeText(this,"GAIN", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            Toast.makeText(this,"LOOSE", Toast.LENGTH_SHORT).show();
-        }
-
+        Toast.makeText(this, user.getUsername(), Toast.LENGTH_SHORT).show();
 
         fitnessRepository = new FitnessRepository(getApplicationContext());
         // Passing each menu ID as a set of Ids because each

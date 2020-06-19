@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessnation.activitites.BottomNavigationActivity
 import com.example.fitnessnation.activitites.LoginActivity
 import kotlinx.android.synthetic.main.fragment_log_in.*
@@ -69,7 +70,7 @@ class LogInFragment : Fragment() {
             user.setPassword(password)
             if (findUser(user)) {
                 saveData()
-             //   Toast.makeText(activity, "You are logged in", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "You are logged in", Toast.LENGTH_SHORT).show()
                 goToNextActivity(user)
                 
             } else {
@@ -82,11 +83,6 @@ class LogInFragment : Fragment() {
     {
         val intent = Intent(activity, BottomNavigationActivity::class.java)
         intent.putExtra("user",user);
-        if (user.choice == true) {
-            Toast.makeText(activity ,"GAIN", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(activity, "LOOSE", Toast.LENGTH_SHORT).show()
-        }
         startActivity(intent)
     }
 
