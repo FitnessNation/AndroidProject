@@ -26,7 +26,7 @@ class MealPlanFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       // BottomNavigationActivity.fitnessRepository.mealInsertTask(Meal.populateData())
+
         if(BottomNavigationActivity.user.getChoice()==false)//if he/she wants to lose weight show him/her weight loss meals
         {
             meals= BottomNavigationActivity.fitnessRepository.getWLossMealsTask();
