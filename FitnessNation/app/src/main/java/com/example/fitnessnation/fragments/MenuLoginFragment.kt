@@ -44,7 +44,7 @@ class MenuLoginFragment : Fragment() {
 
             btn_sign_up.setOnClickListener {
                 toTheSignUpFragment()
-             //   Toast.makeText(getActivity()?.getApplicationContext(), "Sign Up", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity()?.getApplicationContext(), "Sign Up", Toast.LENGTH_LONG).show();
             }
 
 

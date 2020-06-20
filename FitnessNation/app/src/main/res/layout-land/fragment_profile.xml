@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/grad"
-        >
+       >
 
         <RelativeLayout
             android:id="@+id/imgUser"
@@ -25,7 +25,6 @@
                 android:id="@+id/imageOfGender"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_margin="9dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/circle"
                 android:padding="2dp"
@@ -56,8 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rellay1"
-        android:orientation="horizontal"
-        android:layout_marginBottom="30dp">
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -106,7 +104,7 @@
             android:layout_weight="1"
             android:background="@color/followingBg"
             android:gravity="center"
-
+            android:paddingBottom="5dp"
             android:paddingTop="5dp">
 
             <LinearLayout
@@ -144,17 +142,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linlay1"
-       >
+        android:layout_below="@+id/linlay1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginBottom="30dp"
 
-            android:layout_marginTop="40dp"
             android:layout_marginRight="30dp"
+            android:layout_marginTop="50dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -163,19 +159,17 @@
                 android:orientation="vertical">
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gender"
+                    android:text="Email"
                     android:textColor="@color/headings"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text=""
+                    android:text="joey@sharenofood.com"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -196,16 +190,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Goal weight"
+                    android:text="Phone"
                     android:textColor="@color/headings"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/goal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text=""
+                    android:text="+1-202-555-0157"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -215,8 +208,38 @@
                     android:layout_marginTop="15dp"
                     android:background="@color/grey" />
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/grey" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Twitter"
+                    android:textColor="@color/headings"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/twitterUsername"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
 
 
         </LinearLayout>
