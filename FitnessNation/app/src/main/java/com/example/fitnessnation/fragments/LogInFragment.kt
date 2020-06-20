@@ -41,21 +41,21 @@ class LogInFragment : Fragment() {
 
         loadData()
 
-      users= LoginActivity.fitnessRepository.getUsersTask();
+        users= LoginActivity.fitnessRepository.getUsersTask();
 
 
-      username = view!!.findViewById(R.id.Username)
-      password = view!!.findViewById(R.id.Password)
+        username = view!!.findViewById(R.id.Username)
+        password = view!!.findViewById(R.id.Password)
 
         loginButton = view!!.findViewById(R.id.login_button)
 
-      login_button.setOnClickListener(View.OnClickListener {
-          val username = Username.getText().toString()
-          val password = Password.getText().toString()
+        login_button.setOnClickListener(View.OnClickListener {
+            val username = Username.getText().toString()
+            val password = Password.getText().toString()
 
 
-         LoginButtonExecute(username, password)
-      })
+            LoginButtonExecute(username, password)
+        })
 
 
 
@@ -72,9 +72,19 @@ class LogInFragment : Fragment() {
             user.setPassword(password)
             if (findUser(user)) {
                 saveData()
-                Toast.makeText(activity, "You are logged in", Toast.LENGTH_SHORT).show()
+                if(user.weight>0)
+                {
+                    // Toast.makeText(activity, "You are logged in", Toast.LENGTH_SHORT).show()
+                }
+                if(!user.choice)
+                {
+                    // Toast.makeText(activity, "You are logged in", Toast.LENGTH_SHORT).show()
+                }
+
+
+                //
                 goToNextActivity(user)
-                
+
             } else {
                 Toast.makeText(activity, "No such user", Toast.LENGTH_SHORT).show()
             }
@@ -91,14 +101,15 @@ class LogInFragment : Fragment() {
 
     fun findUser(user: User): Boolean {
         for (usr in users!!) {
-            if (usr.getUsername().equals(user.getUsername()) && usr.getPassword().equals(user.getPassword()))
+            if (usr.username == user.username && usr.password == user.password)
             {
-                user.setWeight(usr.getWeight());
-                user.setHeight(usr.getHeight());
-                user.setGender(usr.getGender());
-                user.setChoice(usr.getChoice());
-                user.setGoalWeight(usr.getGoalWeight());
-                Toast.makeText(activity,user.getWeight().toString(),Toast.LENGTH_LONG)
+                user.weight = usr.weight;
+                user.height = usr.height;
+                user.gender = usr.gender;
+                user.choice = usr.choice;
+                user.goalWeight = usr.goalWeight;
+
+
                 return true
             }
         }
@@ -132,10 +143,10 @@ class LogInFragment : Fragment() {
         val savedSwitch= sharedPref?.getBoolean("SWITCH",false)
         var savedName: String="";
         var savedPass: String=""
-       if (savedSwitch==true) {
-           savedName = sharedPref?.getString("NAME", "").toString()
-           savedPass = sharedPref?.getString("PASSWORD", "").toString()
-       }
+        if (savedSwitch==true) {
+            savedName = sharedPref?.getString("NAME", "").toString()
+            savedPass = sharedPref?.getString("PASSWORD", "").toString()
+        }
         Username?.setText(savedName);
         Password?.setText(savedPass);
         if (savedSwitch != null) {

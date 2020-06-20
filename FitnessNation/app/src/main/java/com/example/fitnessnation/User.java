@@ -12,7 +12,19 @@ import java.io.Serializable;
 
 @Entity(tableName = "users")
 public class User implements Serializable {//serializable is for passing the object to the next activity
+    public User(String name, int weight, int height, String pass, boolean choice,String gender, int goal) {
+        this.username=name;
+        this.weight = weight;
+        this.height = height;
+        this.password = pass;
+        this.weightChoice=choice;
+        this.gender=gender;
+        this.goalWeight=goal;
+    }
+    public User() {
 
+
+    }
 
     @PrimaryKey
     @NonNull

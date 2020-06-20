@@ -33,12 +33,12 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         user=BottomNavigationActivity.user;
-      // user= arguments?.getSerializable("user") as User?
+        // user= arguments?.getSerializable("user") as User?
         weight.text= user?.getWeight().toString();
         height.text= user?.getHeight().toString();
         tv_username.text= user?.getUsername();
 
-        if(user?.getGender()=="man")
+        if(user?.getGender()=="male")
         {
             imageOfGender.setImageResource(R.drawable.man)
         }
@@ -47,6 +47,18 @@ class ProfileFragment : Fragment() {
             imageOfGender.setImageResource(R.drawable.woman)
         }
 
-      //  weight.text=a;
+        gender.text=user?.getGender();
+        goal.text=user?.getGoalWeight().toString();
+
+        if(user?.getChoice()==true)//if it wants to gain weight
+        {
+            Toast.makeText(activity, "GAIN", Toast.LENGTH_LONG).show();
+        }
+        else if(user?.getChoice()==false)
+        {
+            Toast.makeText(activity, "LOOSE", Toast.LENGTH_LONG).show();
+        }
+
+        //  weight.text=a;
     }
 }

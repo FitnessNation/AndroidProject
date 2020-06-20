@@ -40,14 +40,14 @@ class SignUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        Toast.makeText(getActivity()?.getApplicationContext(), "SignUp", Toast.LENGTH_LONG).show();
+        //   Toast.makeText(activity?.applicationContext, "SignUp", Toast.LENGTH_LONG).show();
         return inflater.inflate(R.layout.fragment_sign_up, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        users= LoginActivity.fitnessRepository.getUsersTask();
+        users = LoginActivity.fitnessRepository.getUsersTask();
 
         username = view!!.findViewById(R.id.Username)
         password = view!!.findViewById(R.id.Password)
@@ -58,107 +58,127 @@ class SignUpFragment : Fragment() {
             val username = Username.getText().toString()
             val password = Password.getText().toString()
             val weight = weight.getText().toString()
-            var goalWeight=goalweight.getText().toString()
-           // weight.toIntOrNull();
+            var goalWeight = goalweight.getText().toString()
 
             val height = height.getText().toString()
-            //height.toIntOrNull();
+
+            var gender: String = "female"
+            var weight_choice:Boolean=true;
+
+            if (female.isChecked() && weightloss.isChecked()) {
+                gender = "female"
+                weight_choice = false;
+
+                SignUpButtonExecute(
+                    username,
+                    password,
+                    weight,
+                    height,
+                    gender,
+                    weight_choice,
+                    goalWeight
+                )
+            } else if (female.isChecked() && weightgain.isChecked()) {
+                gender = "female"
+                weight_choice = true;
 
 
-            var gender:String="female"
-            var weight_choice=false;
+                SignUpButtonExecute(
+                    username,
+                    password,
+                    weight,
+                    height,
+                    gender,
+                    weight_choice,
+                    goalWeight
+                )
+            }
+            else if (male.isChecked && weightloss.isChecked) {
+                gender="male"
+                weight_choice = false;
 
 
+                SignUpButtonExecute(
+                    username,
+                    password,
+                    weight,
+                    height,
+                    gender,
+                    weight_choice,
+                    goalWeight
+                )
+            } else if (male.isChecked && weightgain.isChecked) {
+                gender="male"
+                weight_choice = true;
 
 
-                if(female.isChecked())
-                {
-                    gender="female"
-                    Toast.makeText(activity, "Female", Toast.LENGTH_SHORT).show()
-                    if(weightloss.isChecked())
-                    {
-                        weight_choice=false;
-                        SignUpButtonExecute(username, password,weight,height,gender,weight_choice,goalWeight)
-                    }
-                    else if(weightgain.isChecked())
-                    {
-                        weight_choice=true;
-                        SignUpButtonExecute(username, password,weight,height,gender,weight_choice,goalWeight)
-                    } else
-                    {
-                        Toast.makeText(activity, "You didn't fill all the boxes", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                else if(male.isChecked())
-                {
-                    if(weightloss.isChecked())
-                    {
-                        weight_choice=false;
-                        SignUpButtonExecute(username, password,weight,height,gender,weight_choice,goalWeight)
-                    }
-                    else if(weightgain.isChecked())
-                    {
-                        weight_choice=true;
-                        SignUpButtonExecute(username, password,weight,height,gender,weight_choice,goalWeight)
-                    } else
-                    {
-                        Toast.makeText(activity, "You didn't fill all the boxes", Toast.LENGTH_SHORT).show()
-                    }
-                } else
-                {
-                    Toast.makeText(activity, "You didn't fill all the boxes", Toast.LENGTH_SHORT).show()
-                }
+                SignUpButtonExecute(
+                    username,
+                    password,
+                    weight,
+                    height,
+                    gender,
+                    weight_choice,
+                    goalWeight
+                )
+            } else {
+                Toast.makeText(activity, "You didn't fill all the boxes", Toast.LENGTH_SHORT).show()
 
+            }
 
-            users= LoginActivity.fitnessRepository.getUsersTask();
+            users = LoginActivity.fitnessRepository.getUsersTask();
 
         })
     }
 
-    fun SignUpButtonExecute(username: String, password: String,weight:String,height:String, gender: String,weight_choice:Boolean,goalweight:String) {
+    fun SignUpButtonExecute(
+        username: String,
+        password: String,
+        weight: String,
+        height: String,
+        gender: String,
+        weight_choice: Boolean,
+        goalweight: String
+    ) {
 
-        val gw=goalweight.toIntOrNull()
-        val w=weight.toIntOrNull()
-        val h=height.toIntOrNull()
-     if(weight.toIntOrNull()==null|| height.toIntOrNull()==null||goalweight.toIntOrNull()==null)
-     {
-    Toast.makeText(activity, "Weight, goalweight and height should be numbers", Toast.LENGTH_SHORT).show()
-     }
-        else
-     {
-         if (username == "" || password == "") {
-             Toast.makeText(activity, "You didn't fill all the boxes", Toast.LENGTH_SHORT).show()
-         } else {
-             val user = User()
-             user.setUsername(username)
-             user.setPassword(password)
-             if (w != null) {
-                 user.setWeight(w)
-             }
-             if (h != null) {
-                 user.setHeight(h)
-             }
-             if (gw != null) {
-                 user.setGoalWeight(gw)
-             }
-              user.setGender(gender)
-              if (findUser(user)) {
-                  Toast.makeText(activity, "User is already registered", Toast.LENGTH_SHORT).show()
-              } else {
-                 LoginActivity.fitnessRepository.addUserTask(user);
-                 // LoginActivity.appDatabase.userDao().addUser(user)
-                  Toast.makeText(activity, "Succesfully registered!", Toast.LENGTH_SHORT).show()
-                  toTheLoginFragment();
-              }
-         }
-     }
+        val gw = goalweight.toIntOrNull()
+        val w = weight.toIntOrNull()
+        val h = height.toIntOrNull()
+        if (w == null || h == null || gw == null) {
+            Toast.makeText(
+                activity,
+                "Weight, goalweight and height should be numbers",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+
+            if (username == "" || password == "") {
+                Toast.makeText(activity, "You didn't fill all the boxes", Toast.LENGTH_SHORT).show()
+            } else {
+
+                val user = User(username, w, h, password, weight_choice, gender, gw)
+
+                Toast.makeText(activity, user.getUsername(), Toast.LENGTH_LONG)
+                if (findUser(user)) {
+                    Toast.makeText(activity, "User is already registered", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+
+                    LoginActivity.fitnessRepository.addUserTask(user);
+
+                    Toast.makeText(activity, "Succesfully registered!", Toast.LENGTH_SHORT).show()
+                    toTheLoginFragment();
+                }
+
+
+            }
+        }
 
 
     }
 
 
-    private fun toTheLoginFragment()
-    {
+    private fun toTheLoginFragment() {
         val transaction = fragmentManager!!.beginTransaction()
         transaction.replace(R.id.primary_frame_s_session, LogInFragment.newInstance())
         transaction.addToBackStack(LogInFragment.toString())
@@ -172,5 +192,5 @@ class SignUpFragment : Fragment() {
         return false
     }
 
+}
 
-    }

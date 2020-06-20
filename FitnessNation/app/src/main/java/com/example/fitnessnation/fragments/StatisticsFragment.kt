@@ -40,42 +40,51 @@ class StatisticsFragment : Fragment() {
         old_weight.setText(user?.weight.toString())
         goal_weight.setText(user?.goalWeight.toString())
 
-        var current=current_weight.getText().toString().toIntOrNull()
+
         var old=old_weight.getText().toString().toIntOrNull()
         var goal=goal_weight.getText().toString().toIntOrNull()
 
+
+
         btn_result.setOnClickListener({
 
-            if(user?.choice==true)//if it wants to gain weight
-        {
-            Toast.makeText(activity,"GAIN",Toast.LENGTH_LONG)
-            /*if( current!! >= goal!!)
+            var current=current_weight.getText().toString().toIntOrNull()
+            if(current==null)
             {
-                Toast.makeText(activity,"CONGRATULATIONS YOU REACHED YOUR GOAL",Toast.LENGTH_LONG)
+                Toast.makeText(activity,"NNNULL",Toast.LENGTH_LONG).show()
             }
-            else
+            if(user?.choice==true && current!=null)//if it wants to gain weight
             {
-
-                Toast.makeText(activity,"DON'T QUIT YOU WILL REACH YOUR GOAL",Toast.LENGTH_LONG)
-            }
-
-        }
-            else
-            {
-                if(user?.choice==false)//if it wants to gain loss
+                Toast.makeText(activity,"GAIN",Toast.LENGTH_LONG).show()
+                if( current >= goal!!)
+                {
+                    Toast.makeText(activity,"CONGRATULATIONS YOU REACHED YOUR GOAL",Toast.LENGTH_LONG).show()
+                }
+                else
                 {
 
-                    if( current!! <= goal!!)
-                    {
-                        Toast.makeText(activity,"CONGRATULATIONS YOU REACHED YOUR GOAL",Toast.LENGTH_LONG)
-                    }
-                    else
-                    {
+                    Toast.makeText(activity,"DON'T QUIT YOU WILL REACH YOUR GOAL",Toast.LENGTH_LONG).show()
+                }
 
-                        Toast.makeText(activity,"DON'T QUIT YOU WILL REACH YOUR GOAL",Toast.LENGTH_LONG)
-                    }
+            }
+            else if(user?.choice==false && current!=null)//if it wants to gain loss
+            {
 
-                }*/
+                if( current <= goal!!)
+                {
+                    Toast.makeText(activity,"CONGRATULATIONS YOU REACHED YOUR GOAL",Toast.LENGTH_LONG).show()
+                }
+                else
+                {
+
+                    Toast.makeText(activity,"DON'T QUIT YOU WILL REACH YOUR GOAL",Toast.LENGTH_LONG).show()
+                }
+
+
+            }
+            else
+            {
+                Toast.makeText(activity,"Type your current weight",Toast.LENGTH_LONG).show()
             }
         })
 
