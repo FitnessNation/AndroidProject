@@ -72,7 +72,17 @@ class LogInFragment : Fragment() {
             user.setPassword(password)
             if (findUser(user)) {
                 saveData()
-                Toast.makeText(activity, "You are logged in", Toast.LENGTH_SHORT).show()
+                if(user.weight>0)
+                {
+                   // Toast.makeText(activity, "You are logged in", Toast.LENGTH_SHORT).show()
+                }
+                if(!user.choice)
+                {
+                   // Toast.makeText(activity, "You are logged in", Toast.LENGTH_SHORT).show()
+                }
+
+
+                //
                 goToNextActivity(user)
                 
             } else {
@@ -91,14 +101,15 @@ class LogInFragment : Fragment() {
 
     fun findUser(user: User): Boolean {
         for (usr in users!!) {
-            if (usr.getUsername().equals(user.getUsername()) && usr.getPassword().equals(user.getPassword()))
+            if (usr.username == user.username && usr.password == user.password)
             {
-                user.setWeight(usr.getWeight());
-                user.setHeight(usr.getHeight());
-                user.setGender(usr.getGender());
-                user.setChoice(usr.getChoice());
-                user.setGoalWeight(usr.getGoalWeight());
-                Toast.makeText(activity,user.getWeight().toString(),Toast.LENGTH_LONG)
+                user.weight = usr.weight;
+                user.height = usr.height;
+                user.gender = usr.gender;
+                user.choice = usr.choice;
+                user.goalWeight = usr.goalWeight;
+
+
                 return true
             }
         }

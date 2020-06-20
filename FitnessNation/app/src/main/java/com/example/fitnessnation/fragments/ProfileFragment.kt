@@ -38,13 +38,25 @@ class ProfileFragment : Fragment() {
         height.text= user?.getHeight().toString();
         tv_username.text= user?.getUsername();
 
-        if(user?.getGender()=="man")
+        if(user?.getGender()=="male")
         {
             imageOfGender.setImageResource(R.drawable.man)
         }
         else
         {
             imageOfGender.setImageResource(R.drawable.woman)
+        }
+
+        gender.text=user?.getGender();
+        goal.text=user?.getGoalWeight().toString();
+
+        if(user?.getChoice()==true)//if it wants to gain weight
+        {
+            Toast.makeText(activity, "GAIN", Toast.LENGTH_LONG).show();
+        }
+        else if(user?.getChoice()==false)
+        {
+            Toast.makeText(activity, "LOOSE", Toast.LENGTH_LONG).show();
         }
 
       //  weight.text=a;

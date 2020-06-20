@@ -26,7 +26,9 @@ public class BottomNavigationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bottom_navigation);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         user= (User) getIntent().getSerializableExtra("user");
-        Toast.makeText(this, user.getUsername(), Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, user.getUsername(), Toast.LENGTH_SHORT).show();
+
+
 
         fitnessRepository = new FitnessRepository(getApplicationContext());
         // Passing each menu ID as a set of Ids because each
@@ -36,6 +38,8 @@ public class BottomNavigationActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+
     }
 
 

@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/grad"
+        android:padding="30dp"
        >
 
         <RelativeLayout
@@ -56,7 +57,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rellay1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="30dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -143,15 +145,17 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linlay1">
+        android:layout_below="@+id/linlay1"
+        android:layout_marginTop="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
+            android:layout_marginBottom="30dp"
 
+            android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="50dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -160,17 +164,19 @@
                 android:orientation="vertical">
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email"
+                    android:text="Gender"
                     android:textColor="@color/headings"
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="joey@sharenofood.com"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -191,15 +197,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone"
+                    android:text="Goal weight"
                     android:textColor="@color/headings"
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/goal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="+1-202-555-0157"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -209,38 +216,8 @@
                     android:layout_marginTop="15dp"
                     android:background="@color/grey" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Twitter"
-                    android:textColor="@color/headings"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/twitterUsername"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-
 
 
         </LinearLayout>

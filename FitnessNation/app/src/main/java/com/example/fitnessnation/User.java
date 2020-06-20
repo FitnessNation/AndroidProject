@@ -13,6 +13,21 @@ import java.io.Serializable;
 @Entity(tableName = "users")
 public class User implements Serializable {//serializable is for passing the object to the next activity
 
+    public User(String name, int weight, int height, String pass, boolean choice,String gender, int goal) {
+        this.username=name;
+        this.weight = weight;
+        this.height = height;
+        this.password = pass;
+        this.weightChoice=choice;
+        this.gender=gender;
+        this.goalWeight=goal;
+    }
+    public User() {
+
+
+    }
+
+
 
     @PrimaryKey
     @NonNull
@@ -20,24 +35,23 @@ public class User implements Serializable {//serializable is for passing the obj
     @ColumnInfo(name = "user_username")
     private String username;
 
-
     @ColumnInfo(name = "user_weight")
-    private int weight=0;
+    private int weight;
 
     @ColumnInfo(name = "user_height")
-    private int height=0;
+    private int height;
 
     @ColumnInfo(name = "user_password")
     private String password;
 
     @ColumnInfo(name = "user_gender")
-    private String gender="nothing";
+    private String gender;
 
     @ColumnInfo(name = "user_weight_choice")
    protected boolean weightChoice;//1 is weight gain 0 is weight loss
 
     @ColumnInfo(name = "user_goal_weight")
-    private int goalWeight=0;
+    private int goalWeight;
 
 
     public String getUsername() {
