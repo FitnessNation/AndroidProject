@@ -28,31 +28,33 @@ class StatisticsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val root = inflater.inflate(R.layout.fragment_statistics, container, false)
-
+        user=BottomNavigationActivity.user;
         return root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        user=BottomNavigationActivity.user;
+
+        user=  BottomNavigationActivity.fitnessRepository.getUserByNameTask(user?.getUsername())
 
         old_weight.setText(user?.weight.toString())
         goal_weight.setText(user?.goalWeight.toString())
 
 
-        var old=old_weight.getText().toString().toIntOrNull()
-        var goal=goal_weight.getText().toString().toIntOrNull()
+
+
 
 
 
         btn_result.setOnClickListener({
 
+
+
+            var old=old_weight.getText().toString().toIntOrNull()
+            var goal=goal_weight.getText().toString().toIntOrNull()
             var current=current_weight.getText().toString().toIntOrNull()
-            if(current==null)
-            {
-                Toast.makeText(activity,"NNNULL",Toast.LENGTH_LONG).show()
-            }
+
             if(user?.choice==true && current!=null)//if it wants to gain weight
             {
                 Toast.makeText(activity,"GAIN",Toast.LENGTH_LONG).show()
@@ -86,7 +88,22 @@ class StatisticsFragment : Fragment() {
             {
                 Toast.makeText(activity,"Type your current weight",Toast.LENGTH_LONG).show()
             }
+            if (current != null) {
+                if (goal != null) {
+
+                    BottomNavigationActivity.fitnessRepository.updateUser(current,goal,user?.getUsername())
+
+                    user=  BottomNavigationActivity.fitnessRepository.getUserByNameTask(user?.getUsername())
+
+                    old_weight.setText(user?.weight.toString())
+                    goal_weight.setText(user?.goalWeight.toString())
+
+
+                }
+            };
         })
+
+
 
 
 

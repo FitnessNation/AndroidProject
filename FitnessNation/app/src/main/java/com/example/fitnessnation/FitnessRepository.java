@@ -18,6 +18,9 @@ public class FitnessRepository {
         new MealInsertTask().execute(meal);
     }
 
+    public void updateUser(int weight, int goal, String name) {
+        new UpdateUserTask(weight, goal, name).execute();
+    }
     public void addUserTask(final User user)   {
         new AddUserTask().execute(user);
     }
@@ -31,10 +34,16 @@ public class FitnessRepository {
     }
 
     public List<User> getUsersTask() throws ExecutionException, InterruptedException {
-       return  new GetUsersTask().execute().get();
+        return  new GetUsersTask().execute().get();
     }
+
+    public User getUserByNameTask(final String name) throws ExecutionException, InterruptedException {
+        return  new GetUserByNameTask().execute(name).get();
+    }
+
     private class MealInsertTask extends AsyncTask<Meal, Void, Void> {
-       // OnFitnessRepositoryActionListener listener;
+
+        // OnFitnessRepositoryActionListener listener;
 
         @Override
         protected Void doInBackground(Meal...meal) {
@@ -44,7 +53,34 @@ public class FitnessRepository {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-        //    listener.actionSuccess();
+            //    listener.actionSuccess();
+        }
+
+
+    }
+
+
+    private class UpdateUserTask extends AsyncTask<Void, Void, Void> {
+        int weight;
+        int goal;
+        String name;
+
+        UpdateUserTask(int w,int g,String n)
+        {
+            this.weight=w;
+            this.goal=g;
+            this.name=n;
+        }
+
+        @Override
+        protected Void doInBackground(Void...params) {
+            appDatabase.userDao().updateUser(weight,goal,name);
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            //    listener.actionSuccess();
         }
 
 
@@ -56,13 +92,11 @@ public class FitnessRepository {
         @Override
         protected List<Meal>  doInBackground(Void...params) {
             return  appDatabase.mealDao().getWLossMeals();
-
         }
 
         @Override
         protected void onPostExecute(List<Meal> meal) {
             super.onPostExecute(meal);
-            //    listener.actionSuccess();
         }
     }
 
@@ -96,6 +130,22 @@ public class FitnessRepository {
         }
     }
 
+    private class GetUserByNameTask extends AsyncTask<String, Void, User> {
+
+        @Override
+        protected User  doInBackground(String...params) {
+            return  appDatabase.userDao().getUserByName(params[0]);
+
+        }
+
+        @Override
+        protected void onPostExecute(User user) {
+            super.onPostExecute(user);
+            //    listener.actionSuccess();
+        }
+    }
+
+
     private class AddUserTask extends AsyncTask<User, Void, Void> {
 
 
@@ -108,7 +158,6 @@ public class FitnessRepository {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            //    listener.actionSuccess();
         }
     }
 

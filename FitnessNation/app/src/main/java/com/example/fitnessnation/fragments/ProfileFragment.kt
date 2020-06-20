@@ -26,13 +26,13 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val root = inflater.inflate(R.layout.fragment_profile, container, false)
-
+        user=BottomNavigationActivity.user;
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        user=BottomNavigationActivity.user;
+        user=  BottomNavigationActivity.fitnessRepository.getUserByNameTask(user?.getUsername())
         // user= arguments?.getSerializable("user") as User?
         weight.text= user?.getWeight().toString();
         height.text= user?.getHeight().toString();
